@@ -44,7 +44,7 @@
     .drop-down-menu {
       position: absolute;
       width: 150px;
-      background-color: #f8f8f8;
+      background-color: #fafafa;
       top: 57px;
       left: 0;
       display: flex;
@@ -56,12 +56,13 @@
       padding: 10px;
 
       hr {
-        background-color: #f1f1f1;
-        border: 1px solid #e2e2e2;
+        border: 1px solid #f1f1f1;
         margin: 5px 0;
       }
+
       li {
         width: 100%;
+
         a {
           height: 40px;
           display: flex;
@@ -71,7 +72,7 @@
           font: 300 16px "Vazir";
 
           &:hover {
-            padding-right: 5px;
+            padding-right: 7px;
             background-color: #f1f1f1;
           }
 
@@ -98,7 +99,7 @@
         top: -11px;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
-        border-bottom: 12px solid #f8f8f8;
+        border-bottom: 12px solid #fafafa;
         border-radius: 0.1rem;
       }
     }
@@ -106,7 +107,7 @@
     .drop-down-btn {
       font: 300 16px "Vazir";
       border: 0;
-      background-color: #00ADB5;
+      background-color: #71C9CE;
       cursor: pointer;
       padding: 5px 10px;
       border-radius: 0.25rem;
@@ -118,6 +119,119 @@
           top: 50px;
           opacity: 1;
           pointer-events: all;
+        }
+      }
+    }
+  }
+}
+
+.contactus {
+  .contactus-header {
+    background: transparent url("../src/assets/ContactUs_Header_Background.jpg") center/cover repeat;
+
+    .container {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: initial;
+      background-color: rgba($color: #000, $alpha: 0.4);
+
+      h4 {
+        margin: 7px 0;
+        font: 600 26px "Vazir";
+        color: #fafafa;
+      }
+
+      p {
+        font: 300 18px "Vazir";
+        color: #fafafa;
+      }
+    }
+  }
+
+  .contactus-body {
+    .container {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      column-gap: 25px;
+      padding: 25px 10px;
+
+      .contact-form {
+        form {
+          padding: 20px 0;
+          width: 100%;
+          box-shadow: 0 0 5px #e2e2e2;
+          border-radius: 0.25rem;
+
+          .input-group {
+            padding: 0 10px;
+            position: relative;
+            margin-bottom: 20px;
+
+            &.columns-2 {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              column-gap: 10px;
+            }
+
+            input {
+              width: 100%;
+              height: 35px;
+              border: 1px solid #ccc;
+              border-radius: 0.2rem;
+              padding: 0 30px 0 10px;
+              color: #777;
+              font: 300 15px "Vazir";
+
+              &.p-default {
+                padding: 0 10px;
+              }
+
+              &::placeholder {
+                transition: padding 0.3s;
+              }
+
+              &:focus {
+                border: 1px solid #777;
+
+                &::placeholder {
+                  padding-right: 7px;
+                }
+              }
+            }
+
+            textarea {
+              width: 100%;
+              min-height: 165px;
+              border-radius: 0.2rem;
+              border: 1px solid #ccc;
+              resize: vertical;
+              padding: 10px;
+              line-height: 1.7;
+              color: #777;
+              font: 300 15px "Vazir";
+
+              &::placeholder {
+                transition: padding 0.3s;
+              }
+              &:focus {
+                border: 1px solid #777;
+                &::placeholder {
+                  padding-right: 7px;
+                }
+              }
+            }
+
+            i {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              right: 20px;
+              color: #777;
+            }
+          }
         }
       }
     }
