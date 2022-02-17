@@ -83,7 +83,6 @@
         }
       }
 
-
       &:hover {
         display: block;
         pointer-events: all;
@@ -96,10 +95,10 @@
         width: 9px;
         height: 9px;
         left: 12px;
-        top: -11px;
+        top: -9px;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
-        border-bottom: 12px solid #fafafa;
+        border-bottom: 10px solid #fafafa;
         border-radius: 0.1rem;
       }
     }
@@ -107,7 +106,7 @@
     .drop-down-btn {
       font: 300 16px "Vazir";
       border: 0;
-      background-color: #71C9CE;
+      background-color: #71c9ce;
       cursor: pointer;
       padding: 5px 10px;
       border-radius: 0.25rem;
@@ -127,7 +126,8 @@
 
 .contactus {
   .contactus-header {
-    background: transparent url("../src/assets/ContactUs_Header_Background.jpg") center/cover repeat;
+    background: transparent url("../src/assets/ContactUs_Header_Background.jpg")
+      center/cover repeat;
 
     .container {
       height: 300px;
@@ -147,6 +147,7 @@
       p {
         font: 300 18px "Vazir";
         color: #fafafa;
+        text-align: center;
       }
     }
   }
@@ -154,10 +155,14 @@
   .contactus-body {
     .container {
       display: grid;
-      grid-template-columns: 2fr 3fr;
+      grid-template-columns: 2fr 2fr;
       column-gap: 25px;
       padding: 25px 10px;
-
+      @media only screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
+        row-gap: 25px;
+      }
       .contact-form {
         form {
           padding: 20px 0;
@@ -205,19 +210,22 @@
             textarea {
               width: 100%;
               min-height: 165px;
+              max-height: 300px;
               border-radius: 0.2rem;
               border: 1px solid #ccc;
               resize: vertical;
               padding: 10px;
-              line-height: 1.7;
+              line-height: 1.85;
               color: #777;
               font: 300 15px "Vazir";
 
               &::placeholder {
                 transition: padding 0.3s;
               }
+
               &:focus {
                 border: 1px solid #777;
+
                 &::placeholder {
                   padding-right: 7px;
                 }
@@ -232,8 +240,62 @@
               color: #777;
             }
           }
+
+          button {
+            width: 100%;
+            padding: 10px 0;
+            cursor: pointer;
+            border-radius: 0.2rem;
+            border: 0;
+            background-color: #f4f4f4;
+            color: #272727;
+            font: 400 15px "Vazir";
+            transition: background-color 0.2s;
+            &:hover {
+              background-color: #e2e2e2;
+            }
+          }
+        }
+      }
+
+      .contact-info {
+        img {
+          width: 72px;
+        }
+        .section-title {
+          font: 500 19px "Vazir";
+          margin: 5px 0;
+        }
+        .contact-item {
+          display: inline-flex;
+          padding: 10px 0;
+          .contact-region {
+            float: right;
+            font: 600 16px "Vazir";
+          }
+          .contact-number {
+            direction: ltr;
+            float: right;
+            font: 400 16px "Vazir";
+            &:nth-child(2) {
+              margin-right: 3px;
+            }
+          }
+        }
+        p {
+          font: 400 16px "Vazir";
         }
       }
     }
   }
+}
+// ContactUs Footer
+.contactus-footer {
+  margin-top: 50px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+  font: 400 14px "Vazir";
 }
