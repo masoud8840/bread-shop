@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+#navigation {
+  .container {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ul {
+    padding: 15px 10px;
+    display: flex;
+
+    li {
+      list-style: none;
+      margin-left: 20px;
+
+      a {
+        text-decoration: none;
+        font: 300 18px "Vazir";
+        color: #272727;
+      }
+    }
+  }
+
+  .dropdown {
+    align-items: center;
+    position: relative;
+    display: block;
+
+    .drop-down-menu {
+      position: absolute;
+      width: 150px;
+      background-color: #f8f8f8;
+      top: 55px;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      transition: top 0.5s, opacity 0.5s;
+      //opacity: 0;
+      pointer-events: none;
+      border-radius: 0.25rem;
+
+
+      &:hover {
+        display: block;
+        pointer-events: all;
+        opacity: 1;
+        top: 45px;
+      }
+
+      .arrow-up {
+        position: absolute;
+        top: -10px;
+        height: 25px;
+        left: 5px;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        color: #f8f8f8;
+      }
+    }
+
+    .drop-down-btn {
+      font: 300 16px "Vazir";
+      border: 0;
+      background-color: #00ADB5;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 0.25rem;
+      color: #fafafa;
+
+      &:hover {
+        & + ul {
+          display: block;
+          top: 45px;
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
