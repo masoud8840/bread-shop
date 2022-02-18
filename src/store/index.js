@@ -7,7 +7,7 @@ const store = createStore({
         id: 1,
         title: "نان باگت بسته 5 تایی",
         imgSource: "/src/assets/Baguette_1.jfif",
-        price: "43000",
+        price: 43000,
         type: "baguette",
       },
       {
@@ -15,24 +15,36 @@ const store = createStore({
         title: "نان باگت بسته 10 تایی",
         imgSource: "/src/assets/Baguette_1.jfif",
         type: "baguette",
-        price: "86000",
+        price: 86000,
       },
       {
         id: 3,
         title: "نان تست بسته 5 تایی",
         imgSource: "/src/assets/Toast_1.jfif",
         type: "toast",
-        price: "50000",
+        price: 50000,
       },
       {
         id: 4,
         title: "نان تست بسته 10 تایی",
         imgSource: "/src/assets/Toast_1.jfif",
         type: "toast",
-        price: "100000",
+        price: 100000,
       },
     ],
-    cart: [],
+    cart: {
+      total: 0,
+      items: [
+        {
+          id: 4,
+          title: "نان تست بسته 10 تایی",
+          imgSource: "/src/assets/Toast_1.jfif",
+          type: "toast",
+          price: 100000,
+          quantity: 2,
+        },
+      ],
+    },
   },
   getters: {
     getProductsList(state) {
