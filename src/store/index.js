@@ -37,15 +37,20 @@ const store = createStore({
       },
     ],
     cart: {
-      total: 0,
       items: [
         {
           id: 4,
           title: "نان تست بسته 10 تایی",
           imgSource: "/src/assets/Toast_1.jfif",
-          type: "toast",
           price: 100000,
-          quantity: 2,
+          quantity: 1,
+        },
+        {
+          id: 1,
+          title: "نان باگت بسته 5 تایی",
+          imgSource: "/src/assets/Baguette_1.jfif",
+          price: 43000,
+          quantity: 1,
         },
       ],
     },
@@ -60,30 +65,27 @@ const store = createStore({
   },
 
   mutations: {
-    addToCart(state, product) {
-      console.log(state, product);
-      let index = state.cart.items.findIndex((prod, i) => {
-        if (prod.id == product.id) {
-          state.cart.items[i].quantity++;
-          return true;
-        } else {
-          state.cart.items.push(product);
-          return false;
-        }
+    addToCart(state, payload) {
+      const findedProdIndex = state.cart.items.findIndex((prod) => {
+        return prod.id === payload.productId;
       });
+      if (findedProdIndex < 0) {
+        const newProd = {
+          id: payload.productId,
+          title: payload.productTitle,
+          imgSource: payload.imgSource,
+          price: payload.price,
+          quantity: 1,
+        };
+        state.cart.items.push(newProd);
+      } else {
+        state.cart.items[findedProdIndex].quantity += 1;
+      }
     },
   },
   actions: {
     addToCart(context, payload) {
-      const prodIndexInCart = context.state.cart.items.findIndex((ci) => {
-        !!(ci.id === payload.productId);
-      });
-      console.log(prodIndexInCart);
-      if (prodIndexInCart < 0) {
-        console.log("Not founded");
-      } else {
-        console.log("founded");
-      }
+      context.commit("addToCart", payload);
     },
   },
 });

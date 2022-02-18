@@ -12,7 +12,13 @@ export default {
   props: ["productId", "imgSource", "productTitle", "type", "price"],
   methods: {
     addToCart() {
-      this.$store.dispatch("addToCart", { productId: this.productId });
+      this.$store.dispatch("addToCart", {
+        productId: this.productId,
+        imgSource: this.imgSource,
+        productTitle: this.productTitle,
+        price: this.price,
+        quantity: 1,
+      });
     },
   },
 };
