@@ -30,6 +30,7 @@
             v-model="price"
           />
         </div>
+        <button @>اعمال فیلتر</button>
       </form>
     </div>
     <div class="products-list">

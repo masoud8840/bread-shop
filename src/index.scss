@@ -335,11 +335,17 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    &.order-success {
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     img {
       width: 256px;
     }
     h4 {
-      margin: 5px 0;
+      margin: 10px 0;
       font: 500 21px "Vazir";
     }
     p {
@@ -434,6 +440,20 @@
       form {
         box-shadow: 0 0 3px #e2e2e2;
         padding: 20px;
+      }
+      button {
+        padding: 7px 15px;
+        margin: 20px 10px;
+        font: 500 13px "Vazir";
+        background-color: transparent;
+        border: 1px solid #ccc;
+        border-radius: 0.2rem;
+        color: #777;
+        transition: color 0.2s, border 0.2s;
+        &:hover {
+          border: 1px solid #272727;
+          color: #272727;
+        }
       }
       .input-group {
         display: grid;
