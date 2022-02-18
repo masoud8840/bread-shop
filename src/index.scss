@@ -71,7 +71,8 @@
     .drop-down-menu {
       position: absolute;
       width: 150px;
-      background-color: #fafafa;
+      background-color: rgba($color: #f8f8f8, $alpha: 0.7);
+      backdrop-filter: blur(3px);
       top: 57px;
       left: 0;
       display: flex;
@@ -101,7 +102,6 @@
 
           &:hover {
             padding-right: 7px;
-            background-color: #f1f1f1;
           }
 
           i {

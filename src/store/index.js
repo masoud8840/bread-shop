@@ -9,6 +9,7 @@ const store = createStore({
         imgSource: "/src/assets/Baguette_1.jfif",
         price: 43000,
         type: "baguette",
+        quantity: 1,
       },
       {
         id: 2,
@@ -16,6 +17,7 @@ const store = createStore({
         imgSource: "/src/assets/Baguette_1.jfif",
         type: "baguette",
         price: 86000,
+        quantity: 1,
       },
       {
         id: 3,
@@ -23,6 +25,7 @@ const store = createStore({
         imgSource: "/src/assets/Toast_1.jfif",
         type: "toast",
         price: 50000,
+        quantity: 1,
       },
       {
         id: 4,
@@ -30,6 +33,7 @@ const store = createStore({
         imgSource: "/src/assets/Toast_1.jfif",
         type: "toast",
         price: 100000,
+        quantity: 1,
       },
     ],
     cart: {
@@ -52,6 +56,34 @@ const store = createStore({
     },
     getCart(state) {
       return state.cart;
+    },
+  },
+
+  mutations: {
+    addToCart(state, product) {
+      console.log(state, product);
+      let index = state.cart.items.findIndex((prod, i) => {
+        if (prod.id == product.id) {
+          state.cart.items[i].quantity++;
+          return true;
+        } else {
+          state.cart.items.push(product);
+          return false;
+        }
+      });
+    },
+  },
+  actions: {
+    addToCart(context, payload) {
+      const prodIndexInCart = context.state.cart.items.findIndex((ci) => {
+        !!(ci.id === payload.productId);
+      });
+      console.log(prodIndexInCart);
+      if (prodIndexInCart < 0) {
+        console.log("Not founded");
+      } else {
+        console.log("founded");
+      }
     },
   },
 });
