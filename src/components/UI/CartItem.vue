@@ -9,17 +9,23 @@
         <input type="number" name="qty" v-model="qty" />
       </div>
     </div>
-    <i class="fa-solid fa-xmark"></i>
+    <i class="fa-solid fa-xmark" @click="removeFromCart"></i>
   </div>
 </template>
 
 <script>
 export default {
   props: ["id", "imgSource", "productTitle", "productDiscription", "quantity"],
+
   data() {
     return {
       qty: this.quantity,
     };
+  },
+  methods: {
+    removeFromCart() {
+      this.$store.dispatch("removeFromCart", { productId: this.id });
+    },
   },
   watch: {
     qty() {

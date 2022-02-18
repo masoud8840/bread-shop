@@ -82,10 +82,18 @@ const store = createStore({
         state.cart.items[findedProdIndex].quantity += 1;
       }
     },
+    removeFromCart(state, payload) {
+      state.cart.items = state.cart.items.filter((item) => {
+        return item.id != payload.productId;
+      });
+    },
   },
   actions: {
     addToCart(context, payload) {
       context.commit("addToCart", payload);
+    },
+    removeFromCart(context, payload) {
+      context.commit("removeFromCart", payload);
     },
   },
 });
