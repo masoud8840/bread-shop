@@ -1,17 +1,26 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import Home from "../views/Home.vue";
+import Shop from "../views/Shop.vue";
 import ContactUs from "../views/ContactUs.vue";
+import Cart from "../views/Cart.vue";
 
 const routes = [
   {
     path: "/",
-    component: Home,
+    redirect: "/shop",
+  },
+  {
+    path: "/shop",
+    component: Shop,
   },
   {
     path: "/contact",
-    component: ContactUs
-  }
+    component: ContactUs,
+  },
+  {
+    path: "/cart",
+    component: Cart,
+  },
 ];
 
 const router = createRouter({

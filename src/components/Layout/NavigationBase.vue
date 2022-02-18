@@ -2,7 +2,10 @@
   <div class="container">
     <ul>
       <li>
-        <router-link to="/" class="main-link">صفحه اصلی</router-link>
+        <router-link to="/" class="main-link">صفه اصلی</router-link>
+      </li>
+      <li>
+        <router-link to="/" class="main-link">فروشگاه</router-link>
       </li>
       <li>
         <router-link to="/contact" class="main-link">تماس با ما</router-link>
