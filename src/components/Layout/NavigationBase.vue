@@ -2,10 +2,10 @@
   <div class="container">
     <ul>
       <li>
-        <router-link to="/">صفحه اصلی</router-link>
+        <router-link to="/" class="main-link">صفحه اصلی</router-link>
       </li>
       <li>
-        <router-link to="/contact">تماس با ما</router-link>
+        <router-link to="/contact" class="main-link">تماس با ما</router-link>
       </li>
     </ul>
     <div class="dropdown">
@@ -13,14 +13,20 @@
       <ul class="drop-down-menu">
         <div class="arrow-up"></div>
         <li>
-          <router-link to="/"><i class="fa-solid fa-user-plus"></i> ثبت نام</router-link>
+          <router-link to="/"
+            ><i class="fa-solid fa-user-plus"></i> ثبت نام</router-link
+          >
         </li>
         <li>
-          <router-link to="/"><i class="fa-solid fa-door-open"></i> ورود</router-link>
+          <router-link to="/"
+            ><i class="fa-solid fa-door-open"></i> ورود</router-link
+          >
         </li>
-        <hr>
+        <hr />
         <li>
-          <router-link to="/cart"><i class="fa-solid fa-cart-shopping"></i> سبد خرید </router-link>
+          <router-link to="/cart"
+            ><i class="fa-solid fa-cart-shopping"></i> سبد خرید
+          </router-link>
         </li>
       </ul>
     </div>

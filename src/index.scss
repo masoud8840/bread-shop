@@ -27,11 +27,31 @@
     li {
       list-style: none;
       margin-left: 20px;
-
       a {
         text-decoration: none;
         font: 300 18px "Vazir";
         color: #272727;
+        position: relative;
+        border-radius: 0.25rem;
+      }
+      .main-link {
+        padding: 5px 10px;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(to left, #0052d4, #4364f7, #6fb1fc);
+          transition: width 0.5s;
+        }
+        &:hover {
+          background-color: #fafafa;
+          &::after {
+            width: 100%;
+          }
+        }
       }
     }
   }
@@ -57,7 +77,8 @@
 
       hr {
         border: 1px solid #f1f1f1;
-        margin: 5px 0;
+        margin: 5px auto;
+        width: 85%;
       }
 
       li {
@@ -155,7 +176,7 @@
   .contactus-body {
     .container {
       display: grid;
-      grid-template-columns: 2fr 2fr;
+      grid-template-columns: 2fr 1.5fr;
       column-gap: 25px;
       padding: 25px 10px;
       @media only screen and (max-width: 768px) {
