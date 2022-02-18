@@ -33,7 +33,15 @@
       </form>
     </div>
     <div class="products-list">
-      <product-item></product-item>
+      <product-item
+        v-for="item in $store.getters.getProductsList"
+        :key="item"
+        :product-id="item.id"
+        :product-title="item.title"
+        :img-source="item.imgSource"
+        :type="item.type"
+        :price="item.price"
+      ></product-item>
     </div>
   </div>
 </template>

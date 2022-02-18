@@ -1,12 +1,12 @@
 <template>
-  <div class="container" v-if="false">
+  <div class="container" v-if="toggleBlankCart">
     <img src="/src/assets/Icons/Cart.png" alt="img-cart" />
     <h4>سبد خرید شما خالی است</h4>
     <p>در فروشگاه میتوانید محصولات بیشتری به سبد خود اضافه کنید.</p>
     <router-link to="/shop">رفتن به فروشگاه</router-link>
   </div>
 
-  <div class="container">
+  <div class="container" v-if="!toggleBlankCart">
     <div class="cart-item">
       <img src="/src/assets/Icons/Cart.png" alt="" />
       <div class="product-discription">
@@ -29,6 +29,15 @@ export default {
     return {
       qty: this.count,
     };
+  },
+  computed: {
+    toggleBlankCart() {
+      if (this.$store.getters.getCart.length <= 0) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
   watch: {
     qty() {
