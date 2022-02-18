@@ -37,22 +37,9 @@ const store = createStore({
       },
     ],
     cart: {
-      items: [
-        {
-          id: 4,
-          title: "نان تست بسته 10 تایی",
-          imgSource: "/src/assets/Toast_1.jfif",
-          price: 100000,
-          quantity: 1,
-        },
-        {
-          id: 1,
-          title: "نان باگت بسته 5 تایی",
-          imgSource: "/src/assets/Baguette_1.jfif",
-          price: 43000,
-          quantity: 1,
-        },
-      ],
+      items: [],
+      total: 0,
+      status: "empty",
     },
   },
   getters: {
@@ -78,8 +65,13 @@ const store = createStore({
           quantity: 1,
         };
         state.cart.items.push(newProd);
+        state.cart.total += payload.price;
+        state.cart.status = "notEmpty";
       } else {
         state.cart.items[findedProdIndex].quantity += 1;
+        state.cart.total +=
+          state.cart.items[findedProdIndex].quantity *
+          state.cart.items[findedProdIndex].price;
       }
     },
     removeFromCart(state, payload) {
@@ -87,13 +79,39 @@ const store = createStore({
         return item.id != payload.productId;
       });
     },
+    emptyTheCart(state) {
+      state.cart.items = [];
+    },
+
+    setCartTo(state, payload) {
+      state.cart.status = payload.type;
+    },
   },
   actions: {
     addToCart(context, payload) {
       context.commit("addToCart", payload);
+      context.commit("setCartTo", { type: "notEmpty" });
     },
     removeFromCart(context, payload) {
       context.commit("removeFromCart", payload);
+      if (context.getters.getCart.items.length <= 0) {
+        context.commit("setCartTo", { type: "empty" });
+      }
+    },
+    emptyTheCart(context) {
+      context.commit("emptyTheCart");
+    },
+    changeCartStatus(context, payload) {
+      if (payload.type == "empty") {
+        context.commit("emptyTheCart");
+      } else if (context.getters.getCart.items.length < 0) {
+        context.commit("setCartTo", { type: "notEmpty" });
+      } else if (payload.type == "payment") {
+        context.commit("setCartTo", payload);
+        setTimeout(function () {
+          context.commit("setCartTo", { type: "empty" });
+        }, 2000);
+      }
     },
   },
 });

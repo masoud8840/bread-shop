@@ -1,7 +1,7 @@
 <template>
   <div
-    class="container"
-    v-if="toggleBlankCart && orderStatus"
+    class="container empty-cart"
+    v-if="getCartStatus == 'empty'"
     :style="toggleBlankCartStyle"
   >
     <img src="/src/assets/Icons/Cart.png" alt="img-cart" />
@@ -9,11 +9,9 @@
     <p>در فروشگاه میتوانید محصولات بیشتری به سبد خود اضافه کنید.</p>
     <router-link to="/shop">رفتن به فروشگاه</router-link>
   </div>
-
-  <!-- v-if="!toggleBlankCart"  -->
   <div
     class="container"
-    v-if="!toggleBlankCart && !orderStatus"
+    v-if="getCartStatus == 'notEmpty'"
     :style="toggleBlankCartStyle"
   >
     <cart-item
@@ -24,9 +22,12 @@
       :quantity="item.quantity"
       :img-source="item.imgSource"
     ></cart-item>
-    <router-link @click="changeOrder" to="/cart">پرداخت</router-link>
+    <div class="container flex-start">
+      <h4>قیمت کل: {{ getCartPrice }} تومان</h4>
+    </div>
+    <router-link @click="changeCartStatus" to="/cart">پرداخت</router-link>
   </div>
-  <div class="container order-success" v-if="orderStatus">
+  <div class="container order-success" v-if="getCartStatus == 'payment'">
     <img src="/src/assets/Icons/OrderSuccess.png" alt="order-success" />
     <h4>پرداخت با موفقیت انجام شد</h4>
     <p>از خرید شما متشکریم.</p>
@@ -47,6 +48,10 @@ export default {
   methods: {
     changeOrder() {
       this.orderStatus = true;
+      this.$store.dispatch("emptyTheCart");
+    },
+    changeCartStatus() {
+      this.$store.dispatch("changeCartStatus", { type: "payment" });
     },
   },
   computed: {
@@ -63,6 +68,12 @@ export default {
       } else {
         return { "margin-top": "25px" };
       }
+    },
+    getCartStatus() {
+      return this.$store.getters.getCart.status;
+    },
+    getCartPrice() {
+      return this.$store.getters.getCart.total;
     },
   },
 };
